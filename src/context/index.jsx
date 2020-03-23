@@ -2,11 +2,10 @@ import React from "react";
 
 import Languages from "./Languages";
 import List from "./List";
-
+import { LANGUAGES } from "./constants";
 import { LanguageContext } from "./context";
 
 import "./index.css";
-import {LANGUAGES} from "./constants";
 
 class ContextDemo extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class ContextDemo extends React.Component {
 
     this.state = {
       language: {
-        selectedKey: LANGUAGES[0].key,
+        selectedKey: LANGUAGES[0].key,  //  TODO: This statement appears twice. I don't like it.
       },
     };
   }
