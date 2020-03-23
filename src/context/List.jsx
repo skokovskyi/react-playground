@@ -17,6 +17,7 @@ function renderListWithLanguageContext(value) {
   );
 }
 
+//  TODO: implement this as HOC and List with selectedLanguageKey prop.
 export default () => {
   return (
     <LanguageContext.Consumer>

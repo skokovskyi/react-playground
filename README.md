@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### This is my React play ground
+Project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Topics:
-- Context API
+## Context API
+Context uses reference identity to determine when to re-render. Don't do like this!
+ 
+`<Context.Provider value={{something: 'something'}}>`
+
+Code above will re-render all consumers every time the Provider re-renders because a new object is always created.
