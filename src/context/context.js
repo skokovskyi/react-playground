@@ -1,7 +1,7 @@
 import React from "react";
 
-import { LANGUAGES } from "./constants";
+import { getDefaultLanguage } from "./utils";
 
 export const LanguageContext = React.createContext({
-  selectedKey: LANGUAGES[0].key,
+  selectedKey: getDefaultLanguage().key,
 });

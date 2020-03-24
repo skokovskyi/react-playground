@@ -2,8 +2,9 @@ import React from "react";
 
 import Languages from "./Languages";
 import List from "./List";
-import { LANGUAGES } from "./constants";
+
 import { LanguageContext } from "./context";
+import { getDefaultLanguage } from "./utils";
 
 import "./index.css";
 
@@ -13,10 +14,16 @@ class ContextDemo extends React.Component {
 
     this.state = {
       language: {
-        selectedKey: LANGUAGES[0].key,  //  TODO: This statement appears twice. I don't like it.
+        selectedKey: getDefaultLanguage().key,
       },
     };
   }
+
+  handleLanguageChange = (selectedKey) => {
+    this.setState({
+      language: { selectedKey },
+    });
+  };
 
   render() {
     return (
@@ -24,7 +31,7 @@ class ContextDemo extends React.Component {
         <LanguageContext.Provider value={this.state.language}>
           <h3>Context API demo</h3>
           <hr />
-          <Languages />
+          <Languages onChange={this.handleLanguageChange}/>
           <br/>
           <List />
         </LanguageContext.Provider>

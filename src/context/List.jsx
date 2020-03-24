@@ -2,16 +2,15 @@ import React from "react";
 
 import { LanguageContext } from "./context";
 
-function renderListWithLanguageContext(value) {
-  const selectedLanguageKey = value.selectedKey;
+function renderListWithLanguageContext(languageContext) {
+  const key = languageContext.selectedKey;
+  const items = new Array(5).fill(null);
 
   return  (
     <div>
       List of to do items:
       <ul>
-        <li>[{selectedLanguageKey}] Item 1</li>
-        <li>[{selectedLanguageKey}] Item 2</li>
-        <li>[{selectedLanguageKey}] Item 3</li>
+        {items.map((_, idx) => <li key={idx}>[{ key }] Item {idx}</li>)}
       </ul>
     </div>
   );

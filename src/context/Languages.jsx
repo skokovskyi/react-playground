@@ -3,20 +3,22 @@ import React from "react";
 import { LANGUAGES } from "./constants";
 import { LanguageContext } from "./context";
 
-function renderLanguagesWithContext(context) {
+function Languages(props) {
+  const { selectedLanguageKey, onChange } = props;
+
   return (
     <div>
       <span>Select a language: </span>
-      <select>
+      <select onChange={(e) => onChange(e.target.value)}>
         {LANGUAGES.map(({key, value}) => {
           const attributes = {};
 
-          if (key === context.selectedKey) {
-            attributes["selected"] = "selected"
+          if (key === selectedLanguageKey) {
+            attributes["selected"] = undefined;
           }
 
           return (
-            <option value={key} {...attributes}>
+            <option key={value} value={key} {...attributes}>
               {value}
             </option>
           );
@@ -26,8 +28,10 @@ function renderLanguagesWithContext(context) {
   )
 }
 
-export default () => (
+export default (props) => (
   <LanguageContext.Consumer>
-    {renderLanguagesWithContext}
+    {
+      (v) => <Languages {...props} selectedLanguageKey={v.selectedKey} />
+    }
   </LanguageContext.Consumer>
 );
