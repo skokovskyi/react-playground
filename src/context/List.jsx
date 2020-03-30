@@ -1,26 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-import { LanguageContext } from "./context";
+import withSelectedLanguageKey from "./withSelectedLanguageKey";
 
-function renderListWithLanguageContext(languageContext) {
-  const key = languageContext.selectedKey;
+function List(props) {
+  const { selectedLanguageKey } = props;
   const items = new Array(5).fill(null);
 
   return  (
     <div>
       List of to do items:
       <ul>
-        {items.map((_, idx) => <li key={idx}>[{ key }] Item {idx}</li>)}
+        {items.map((_, idx) => <li key={idx}>[{ selectedLanguageKey }] Item {idx}</li>)}
       </ul>
     </div>
   );
 }
 
-//  TODO: implement this as HOC and List with selectedLanguageKey prop.
-export default () => {
-  return (
-    <LanguageContext.Consumer>
-      {renderListWithLanguageContext}
-    </LanguageContext.Consumer>
-  );
+List.defaultProps = {
+  selectedLanguageKey: "",
 };
+
+List.propTypes = {
+  selectedLanguageKey: PropTypes.string,
+};
+
+export default withSelectedLanguageKey(List);

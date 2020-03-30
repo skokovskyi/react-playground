@@ -19,7 +19,11 @@ Note: passing `undefined` as a Provider value does not cause consuming component
 If I need to update the context from a component that is nested deeply,
 I can pass a function down through the context to allow consumers to update the context.
 
-`useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+Hook `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+
+## Higher-Order Component
+HOC is a function that takes a component and returns a new component. Transforms a component into another component.
+
 
 
 

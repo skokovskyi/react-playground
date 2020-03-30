@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+import withSelectedLanguageKey from "./withSelectedLanguageKey";
 import { LANGUAGES } from "./constants";
-import { LanguageContext } from "./context";
 
 function Languages(props) {
   const { selectedLanguageKey, onChange } = props;
@@ -28,10 +29,14 @@ function Languages(props) {
   )
 }
 
-export default (props) => (
-  <LanguageContext.Consumer>
-    {
-      (v) => <Languages {...props} selectedLanguageKey={v.selectedKey} />
-    }
-  </LanguageContext.Consumer>
-);
+Languages.defaultProps = {
+  selectedLanguageKey: "",
+  onChange: () => {},
+};
+
+Languages.propTypes = {
+  selectedLanguageKey: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+export default withSelectedLanguageKey(Languages);
